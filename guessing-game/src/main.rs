@@ -1,5 +1,7 @@
 /// Using `use` to import the `io` module, bringing it into scope for use in this file.
 use std::io;
+/// Add rand to the scope.
+use rand:Rng;
 
 fn main() {
     println!("Guess the number!");
