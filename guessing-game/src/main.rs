@@ -4,6 +4,10 @@ use std::io;
 fn main() {
     println!("Guess the number!");
 
+   /// Add rand crate to generate random number between 1 and 100 included. If I want to generate range between 1 and 99, I simply write like this .gen_range(1..100);  
+    let secret_number = rand::thread_rng()
+        .gen_range(1..=100);
+
     println!("Please input your guess.");
 
     // Declare a mutable variable of type String and initialize it as an empty string
