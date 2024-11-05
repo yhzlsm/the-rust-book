@@ -67,3 +67,6 @@ What's happen when a function fail in Rust?
 Return `Result` 1. `Ok` - Success case - Could contain some information. 2. `Err` - Signal an error has occurred - Contain the reason why the operation failed.
 
 - Trait = Is a set of methods.
+- Enum is Rust can carry information. Ex: `Result`.
+
+The type inference is Rust work "like magic". Ex: If we compare `cmp` two strings and one of that has a type, Rust will infere the type for the other variable, making sure that we don't compare mismatch types.
