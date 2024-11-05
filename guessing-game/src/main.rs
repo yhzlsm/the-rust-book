@@ -1,36 +1,45 @@
 /// Using `use` to import the `io` module, bringing it into scope for use in this file.
 use std::io;
 /// Add trait Rng from the rand library to the scope.
-use rand:Rng;
+use rand::Rng;
 use std::cmp::Ordering;
 
 fn main() {
     println!("Guess the number!");
 
-   /// Add rand crate to generate random number between 1 and 100 included. If I want to generate range between 1 and 99, I simply write like this .gen_range(1..100);
+   // Add rand crate to generate random number between 1 and 100 included. If I want to generate range between 1 and 99, I simply write like this .gen_range(1..100);
    
    // We call thread_rgn() from crate rand 
     let secret_number = rand::thread_rng()
         .gen_range(1..=100);
 
-    println!("Please input your guess.");
+    loop {
 
-    // Declare a mutable variable of type String and initialize it as an empty string
-    let mut guess = String::new();
+        println!("Please input your guess.");
 
-    // Initialize the stdin method 
-    io::stdin()
-        //Read input and store it in the `guess` variable
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+        // Declare a mutable variable of type String and initialize it as an empty string
+        let mut guess = String::new();
 
-    println!("You guessed: {guess}");
+        // Initialize the stdin method 
+        io::stdin()
+            //Read input and store it in the `guess` variable
+            .read_line(&mut guess)
+            .expect("Failed to read line");
 
-    let guess: u32 = guess.trim().parse().expect("Please type a number!");
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println("Too small"),
-        Ordering::Greater => println("Too big"),
-        Ordering::Equal => println("You win!"),
+        println!("You guessed: {guess}");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small"),
+            Ordering::Greater => println!("Too big"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
     }
 }
-

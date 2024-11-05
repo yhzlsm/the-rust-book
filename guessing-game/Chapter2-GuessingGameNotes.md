@@ -70,3 +70,5 @@ Return `Result` 1. `Ok` - Success case - Could contain some information. 2. `Err
 - Enum is Rust can carry information. Ex: `Result`.
 
 The type inference is Rust work "like magic". Ex: If we compare `cmp` two strings and one of that has a type, Rust will infere the type for the other variable, making sure that we don't compare mismatch types.
+
+- `match` can be used for flow control and also to handle errors (expression).
