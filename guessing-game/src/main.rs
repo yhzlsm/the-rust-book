@@ -32,7 +32,7 @@ fn main() {
             Ok(num) => num,
             Err(_) => continue,
         };
-
+        // Match the guess variable
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small"),
             Ordering::Greater => println!("Too big"),
